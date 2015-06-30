@@ -1,13 +1,16 @@
-@(message: String)
+@(message: String, forecast: String)
 
 @main("Weather") {
 
     Welcome to weather<br>
     <br>
-    @message<br>
+    @message
     <br>
+    <pre>@forecast</pre><br>
+    <br>
+    @forecast.length Characters
     <br>
 
-    <a href="doshit">get shit done</a>
+    <a href="getForecast">get shit done</a>
 
 }
