@@ -32,12 +32,17 @@ public class Communication {
             Logger.error("Error!", e);
         }
 
-        if(false) {
+        Logger.debug("Trying to send message:\n" + message);
+
+        // Testmode?
+        if(true) {
             try {
                 sendSMS(from, message);
             } catch (IOException e) {
                 Logger.error("error while sending!", e);
             }
+        } else {
+            Logger.debug("skipped sending because of Testmode");
         }
 
         return message;
@@ -76,11 +81,11 @@ public class Communication {
         writer.close();
         reader.close();
 
-        Logger.debug("sent message. response: " + response);
         if(response.contains("message was sent")) {
             Logger.debug("Sending successfull!");
         } else {
             Logger.error("Something went wrong while sending!");
+            Logger.debug("response: " + response);
         }
     }
 

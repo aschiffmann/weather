@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import play.Logger;
 import java.util.Iterator;
 
-public class News implements IMessageSource {
+public class News implements IMessageSource, Runnable {
 
     @Override
     public JsonNode getJsonData() {
@@ -27,5 +27,11 @@ public class News implements IMessageSource {
     @Override
     public String getSenderFromData(JsonNode data) {
         return "News";
+    }
+
+    @Override
+    public void run() {
+        Logger.info("###News tick");
+        Communication.process("N", this);
     }
 }

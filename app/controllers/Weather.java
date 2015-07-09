@@ -5,7 +5,7 @@ import play.Logger;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Weather implements IMessageSource{
+public class Weather implements IMessageSource, Runnable {
 
     public JsonNode getJsonData() {
         String iskanderkul = "http://api.wunderground.com/api/2d20da4a2a78196d/hourly10day/q/zmw:00000.1.38718.json";
@@ -67,5 +67,11 @@ public class Weather implements IMessageSource{
         desiredHours.add(12);
         desiredHours.add(18);
         return desiredHours;
+    }
+
+    @Override
+    public void run() {
+        Logger.info("###weather tick");
+        Communication.process("WF", this);
     }
 }
