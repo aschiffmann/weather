@@ -32,9 +32,7 @@ public class Communication {
             Logger.error("Error!", e);
         }
 
-        Logger.debug("Trying to send message:\n" + message);
-
-        // Testmode?
+        // Production-mode?
         if(true) {
             try {
                 sendSMS(from, message);
@@ -52,6 +50,8 @@ public class Communication {
         message = URLEncoder.encode(message, "UTF-8");
         from = URLEncoder.encode(from, "UTF-8");
         message = message.substring(0, Math.min(message.length(), 160 - from.length()));
+        Logger.debug("Trying to send message:\n" + message);
+
         String msisdn = "21275049";
         int tlength = 160 - from.length() - message.length();
         String body = "msisdn=" + URLEncoder.encode(msisdn, "UTF-8") + "&" +

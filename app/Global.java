@@ -27,7 +27,7 @@ public class Global extends GlobalSettings {
         Logger.info("starting Weather-Job");
 
         try {
-            FiniteDuration nextRun = calculateDelayToTime("15:00");
+            FiniteDuration nextRun = calculateDelayToTime("16:40");
 
             weatherJob = Akka.system().scheduler().scheduleOnce(nextRun, new Runnable() {
                  @Override
@@ -48,7 +48,7 @@ public class Global extends GlobalSettings {
         Logger.info("starting News-Job");
 
         try {
-            FiniteDuration nextRun = calculateDelayToTime("15:05");
+            FiniteDuration nextRun = calculateDelayToTime("03:00");
 
             newsJob = Akka.system().scheduler().scheduleOnce(nextRun, new Runnable() {
                 @Override
