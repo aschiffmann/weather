@@ -18,6 +18,7 @@ public class News implements IMessageSource, Runnable {
         String message = "";
         for(Iterator<JsonNode> news = data.get("responseData").get("results").elements(); news.hasNext(); ) {
             message += news.next().get("titleNoFormatting").asText().replace(" - SPIEGEL ONLINE", "");
+            message = message.replace("ü", "ue").replace("Ü", "Ue").replace("ö", "oe").replace("Ö", "Oe").replace("ä", "ae").replace("Ä", "Ae");
             message += "\n";
         }
         Logger.debug("Created message:\n" + message);
